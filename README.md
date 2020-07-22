@@ -5,7 +5,7 @@
     1. Flutter로 안드로이드 App을 개발
     2. 라즈베리파이를 이용하여 IOT CAR를 만든다.
 - 주요 구성 : 
-    1. App 구성:
+    1. App 구성:<br>
       + Maunal Mode : 조이스틱 기동, CAM 위치 Click 시 IOT CAR 해당 위치로 기동
       + Auto Mode : 
         ⓐ 바닥의 선을 따라 이동 하게 한다.
