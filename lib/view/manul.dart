@@ -9,36 +9,61 @@ class Manual extends StatefulWidget {
 class _ManualState extends State<Manual> {
   @override
   Widget build(BuildContext context) {
-
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text('수동 조작'),
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) => Column(
+      body:  Column(
           children: <Widget>[
             Container(
-              height: constraints.constrainHeight() * 0.4,
-              width: constraints.constrainWidth(),
+              height: h * 0.35,
+              width: w,
               color: Colors.redAccent,
               child: Text('data'),
             ),
-            Container(
-              height: constraints.constrainHeight() * 0.6,
-              width: constraints.constrainWidth(),
-              color: Colors.lime,
-              child: ClipOval(
+            LayoutBuilder(
+              builder:(context, constraints) =>  GestureDetector(
+                onPanDown: (details) {
+                  print('x : ${details.localPosition.dx}');
+                  print('y : ${details.localPosition.dy}');
+                },
+                onPanUpdate: (details) {
+                  print('x : ${details.localPosition.dx}');
+                  print('y : ${details.localPosition.dy}');
+                },
                 child: Container(
-                  height: 50.0,
-                  width: 50.0,
-                  color: Colors.blueAccent,
-                  child: Text('data'),
+                  height: h * 0.532,
+                  width: w,
+                  color: Colors.white,
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          left: constraints.maxWidth * 0.5 - 75.0,
+                          bottom: 0.0,
+                          child: Container(
+                            child: Image.asset('assets/images/joystick_background.png',width: 150.0,height: 150.0,),
+                          ),
+                        ),
+                        Positioned(
+                          left: constraints.maxWidth * 0.5 - 50.0,
+                          bottom: 0.0 + 24.0,
+                          child: Container(
+                            child: Image.asset('assets/images/joystick_knob.png',width: 100.0,height: 100.0,),
+                          ),
+                        )
+
+                      ],
+
+
+                  ),
                 ),
               ),
             )
           ],
         ),
-      ),
+
     );
   }
 }
